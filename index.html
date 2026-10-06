@@ -1,0 +1,221 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Mother Dragon</title> 
+<style> 
+*{ 
+box-sizing:border-box; 
+margin:0; 
+padding:0; 
+} 
+ 
+body{ 
+min-height:100vh; 
+display:flex; 
+justify-content:center; 
+align-items:center; 
+font-family:Georgia,"Times New Roman",serif; 
+overflow:hidden; 
+background: 
+radial-gradient(circle at 50% 45%,rgba(255,100,170,.25),transparent 25%), 
+radial-gradient(circle at 20% 20%,rgba(170,40,100,.3),transparent 30%), 
+radial-gradient(circle at 80% 80%,rgba(100,10,60,.4),transparent 35%), 
+linear-gradient(135deg,#16020d,#3b0825,#721341,#a52d63,#4b092f,#17020d); 
+position:relative; 
+} 
+ 
+body:before{ 
+content:""; 
+position:fixed; 
+inset:0; 
+background: 
+radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.5px); 
+background-size:150px 150px; 
+opacity:.35; 
+pointer-events:none; 
+} 
+ 
+.glow{ 
+position:absolute; 
+width:600px; 
+height:600px; 
+border-radius:50%; 
+background:radial-gradient(circle,rgba(255,95,165,.3),transparent 70%); 
+filter:blur(30px); 
+} 
+ 
+.folder{ 
+position:relative; 
+width:430px; 
+height:320px; 
+background: 
+linear-gradient(145deg,#5a1238,#8d2454 45%,#4b0b2d); 
+border:2px solid rgba(255,205,230,.7); 
+border-radius:8px 18px 18px 18px; 
+box-shadow: 
+0 0 15px rgba(255,130,190,.7), 
+0 0 50px rgba(130,20,80,.8), 
+0 30px 80px rgba(0,0,0,.7); 
+display:flex; 
+justify-content:center; 
+align-items:center; 
+z-index:2; 
+} 
+ 
+.folder:before{ 
+content:""; 
+position:absolute; 
+top:-35px; 
+left:0; 
+width:145px; 
+height:45px; 
+background:linear-gradient(145deg,#721847,#a52e65); 
+border:2px solid rgba(255,205,230,.7); 
+border-bottom:none; 
+border-radius:12px 25px 0 0; 
+} 
+ 
+.folder:after{ 
+content:""; 
+position:absolute; 
+inset:12px; 
+border:1px solid rgba(255,210,230,.25); 
+border-radius:5px 13px 13px 13px; 
+pointer-events:none; 
+} 
+ 
+.dragon-symbol{ 
+position:absolute; 
+top:35px; 
+font-size:72px; 
+filter: 
+drop-shadow(0 0 8px #ffb3d5) 
+drop-shadow(0 0 20px rgba(255,60,150,.8)); 
+animation:float 4s ease-in-out infinite; 
+} 
+ 
+.title{ 
+position:absolute; 
+top:125px; 
+color:#ffe8f2; 
+font-size:24px; 
+letter-spacing:5px; 
+text-align:center; 
+text-shadow: 
+0 0 8px #ff9fc7, 
+0 0 20px rgba(255,70,150,.8); 
+} 
+ 
+.click-button{ 
+position:absolute; 
+bottom:45px; 
+left:50%; 
+transform:translateX(-50%); 
+padding:14px 45px; 
+font-family:Georgia,"Times New Roman",serif; 
+font-size:18px; 
+letter-spacing:4px; 
+color:#fff0f7; 
+background:linear-gradient(135deg,#5a0d35,#a72d63,#5a0d35); 
+border:1px solid #ffc4df; 
+border-radius:30px; 
+cursor:pointer; 
+box-shadow: 
+0 0 10px rgba(255,150,200,.8), 
+0 0 25px rgba(255,70,150,.5), 
+inset 0 0 15px rgba(255,180,215,.15); 
+transition:.3s; 
+} 
+ 
+.click-button:hover{ 
+transform:translateX(-50%) scale(1.08); 
+background:linear-gradient(135deg,#8d1d51,#d04b82,#8d1d51); 
+box-shadow: 
+0 0 15px #ffd1e5, 
+0 0 40px #ff5c9f, 
+0 0 70px rgba(255,50,150,.7); 
+} 
+ 
+.click-button:active{ 
+transform:translateX(-50%) scale(.96); 
+} 
+ 
+.petal{ 
+position:absolute; 
+width:10px; 
+height:18px; 
+background:linear-gradient(135deg,#fff0f7,#e9689d); 
+border-radius:80% 20% 80% 20%; 
+box-shadow:0 0 10px rgba(255,180,215,.7); 
+opacity:.7; 
+animation:fall 8s linear infinite; 
+} 
+ 
+.petal:nth-child(1){left:10%;animation-delay:0s} 
+.petal:nth-child(2){left:25%;animation-delay:2s} 
+.petal:nth-child(3){left:45%;animation-delay:4s} 
+.petal:nth-child(4){left:70%;animation-delay:1s} 
+.petal:nth-child(5){left:88%;animation-delay:3s} 
+ 
+@keyframes float{ 
+0%,100%{transform:translateY(0)} 
+50%{transform:translateY(-12px)} 
+} 
+ 
+@keyframes fall{ 
+0%{ 
+top:-30px; 
+transform:rotate(0deg); 
+} 
+100%{ 
+top:110%; 
+transform:rotate(360deg); 
+} 
+} 
+ 
+@media(max-width:600px){ 
+.folder{ 
+width:85vw; 
+height:300px; 
+} 
+.title{ 
+font-size:19px; 
+letter-spacing:3px; 
+} 
+.click-button{ 
+font-size:16px; 
+padding:12px 35px; 
+} 
+} 
+</style> 
+</head> 
+<body> 
+ 
+<div class="glow"></div> 
+ 
+<div class="petal"></div> 
+<div class="petal"></div> 
+<div class="petal"></div> 
+<div class="petal"></div> 
+<div class="petal"></div> 
+ 
+<div class="folder"> 
+<div class="dragon-symbol">🐉</div> 
+<div class="title">MOTHER DRAGON</div> 
+<a href="haha.html" style="align-items: center;"> 
+<button class="click-button" onclick="openPage()"> 
+CLICK ME 
+</button> 
+</a> 
+</div> 
+ 
+<script> 
+function openPage(){ 
+window.location.href="index.html"; 
+} 
+</script> 
+ 
+</body> 
+</html>
